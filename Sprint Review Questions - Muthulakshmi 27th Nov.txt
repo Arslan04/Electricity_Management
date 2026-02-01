@@ -1,0 +1,274 @@
+Common Springboot and Angular Questions
+
+How would you design a microservice-friendly architecture for your project using Spring Boot for backend and Angular for frontend?
+Explain how frontend (Angular) and backend (Spring Boot) communicate using REST APIs in your case study.
+What is the role of DTOs in your system (e.g., BookingDTO, InvoiceDTO, BillDTO)?
+How will you design entity relationships (One-to-Many, Many-to-One) for your chosen system?
+How will JWT authentication secure your system’s role-based functionality (Customer/Admin/Officer/Staff)?
+What caching mechanism (e.g., Redis, Spring Cache) could improve performance in modules like tracking, room search, bill history?
+Explain how to implement pagination & filtering on large datasets using Spring Boot + Angular (e.g., All Bookings, Bill History, Room Listing).
+Describe how your project will handle concurrency, especially in bookings (room booking, parcel booking).
+How do you implement global exception handling and show user-friendly messages in Angular?
+How would you log and trace key actions like payments, cancellations, or complaints?
+
+A. Business-Level Questions _ Parcel Management
+
+What business problem does the Parcel Management System aim to solve?
+How does the system streamline customer booking and parcel tracking processes compared to traditional logistics workflows?
+What are the key roles in this system and how does each contribute to business operations?
+Why is role-based access control important in a logistics system?
+How does the PMS enhance customer experience in booking and tracking parcels?
+Why is soft cancellation used instead of hard deletion in business systems?
+What business value does real-time tracking provide to customers and officers?
+Why is the invoice generation feature critical for audit and compliance needs?
+How do admin/officer booking flows reduce workload for walk-in customers?
+What are the financial implications of miscalculating parcel charges?
+
+
+B. Application-Level Questions Parcel Management
+
+
+Describe the steps involved in booking a parcel as a customer.
+Explain how parcel service cost is calculated using base rate, weight, packing, and tax.
+What validations must occur during the customer login process?
+How does the officer update pickup/drop timings?
+Explain the workflow for canceling a booking by customer and officer.
+How does the officer booking process differ from customer booking?
+Describe the fields involved in the tracking screen for both customer and officer.
+What happens in the system when invoice generation is triggered?
+Explain error handling for invalid Booking ID entries in various modules.
+How is payment validated for card transactions?
+
+
+C. Theoretical Questions Parcel Management
+
+
+What is meant by “role-based access control”?
+Why is password encryption important in web applications?
+Define CRUD operations. Which modules in PMS use CRUD heavily?
+What is a soft delete? How is it implemented in this system?
+Explain the concept of ACID properties in transactions (e.g., payment).
+What is front-end validation vs backend validation?
+Why is pagination important in large datasets such as orders or bookings?
+Describe the MVC architecture and how this system could use it.
+What is the purpose of using unique IDs (Customer ID, Booking ID)?
+Define exception handling and give an example from PMS.
+
+Springboot/ Angular - Parcel Management
+
+How will you calculate parcel cost in the backend using the provided formula and return it to the Angular UI?
+How will you design API endpoints for customer tracking vs. officer tracking?
+What database relationships are needed for storing pickup/drop times?
+How will Angular handle conditional UI display for customer vs officer roles?
+How will you implement soft cancellation in Spring Boot (status update instead of delete)?
+How will the system prevent officers/customers from modifying parcels that are “Delivered”?
+How do you handle time fields (pickup/drop) in Angular + backend (LocalDateTime conversion)?
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+✅ 2. Electricity Billing System (EBS)
+
+
+A. Business-Level Questions
+
+What business challenge does the Electricity Billing System aim to solve?
+How does digital bill viewing improve operational efficiency?
+Why is consumer registration mandatory before accessing services?
+How does EBS reduce manual workload for electricity board offices?
+What is the business importance of complaint management?
+How does online payment benefit the electricity provider and the customer?
+Why does the system separate residential and commercial customers?
+What impact does bill history tracking have on consumer transparency?
+Why is unique identification (Consumer No, User ID) essential?
+How can bulk bill upload reduce administrative workload?
+
+
+B. Application-Level Questions
+
+Describe the workflow of customer registration and required validations.
+How does the View Bills screen calculate total payable amount?
+Explain bill summary and how users confirm selected bills.
+What validations are done in the payment module?
+How does the system track complaint status and types?
+Describe admin responsibilities in consumer management.
+How does the admin add new bills and prevent duplicates?
+What happens during disconnect/reconnect consumer action?
+How does the system filter bills in bill history?
+Explain the detailed invoice fields generated after payment.
+
+
+C. Theoretical Questions
+
+What is meant by data validation? Give examples from EBS.
+Why is email and mobile number uniqueness necessary in databases?
+What is the difference between authentication and authorization?
+Define what a “bill lifecycle” means in billing systems.
+Explain the concept of data consistency in billing applications.
+What is encryption and why is it used for passwords?
+Explain the purpose of date pickers and date validation.
+What is the difference between paid, unpaid, and partially paid statuses?
+Define pagination and where it is used in EBS.
+What is a complaint workflow in general business systems?
+
+Springboot/Angular EBS
+
+How will you implement unique constraint validation for Consumer No, Email, and UserID using backend + Angular async validators?
+Write the API design for fetching all unpaid bills for a given consumer.
+How do you calculate total payable amount in Angular when multiple checkboxes are selected?
+How do you secure payment API using Spring Security?
+How will pagination be implemented for bill history?
+How does Angular handle filtering based on payment status?
+How will you auto-generate invoice PDFs for electricity bills?
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+✅ 3. Hotel Management System (HMS)
+
+
+A. Business-Level Questions
+
+What challenges in hotel operations does HMS address?
+Why is customer self-service important in the hotel industry?
+What value does real-time room availability provide?
+Why does the system separate admin and staff roles?
+How do digital invoices improve customer satisfaction?
+Why is complaint management required in hospitality?
+How does reservation modification reduce customer churn?
+What business advantage does bulk room upload provide?
+Why is booking history valuable for hotel marketing?
+How does HMS reduce front-desk congestion?
+
+
+B. Application-Level Questions
+
+Explain the customer registration validations in HMS.
+Describe the room search process and field validations.
+How does available room filtering work?
+Explain how booking cost is calculated for room stay.
+What is the flow for paying for a booking?
+Explain how the admin manages rooms and detects conflicts.
+What validations are required for editing reservations?
+How is complaint status tracked and managed?
+How does invoice generation work after payment?
+What actions are available in Booking History?
+
+
+C. Theoretical Questions
+
+What is meant by session management in web applications?
+Explain the use of data validation in forms.
+What are the advantages of using dropdowns for predefined categories?
+What is concurrency control in reservation systems?
+Why is unique room number mandatory?
+Explain relational database principles used in HMS (e.g., Rooms table, Booking table).
+What is a transaction, and how does it apply in hotel billing?
+What are authentication and authorization in HMS?
+What are functional and non-functional requirements? Provide examples from HMS.
+Explain the importance of error messages in UI/UX.
+
+Springboot/Angular - HMS
+
+How do you check room availability considering date overlaps in Spring Boot?
+Write a query to find available rooms between check-in and check-out dates.
+How will Angular dynamically update room availability when dates change?
+How is invoice generation handled after payment completion?
+How would you enforce modification rules (e.g., “cannot modify booking within 24 hours”)?
+How will you manage file upload (bulk room upload) in Spring Boot?
+How would you design Admin vs Staff UI components in Angular?
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Ecart 
+
+Business Level
+
+What is the primary business purpose of the e-commerce platform described in the backlog?
+Why is enforcing unique email and secure registration important for the business?
+What business problem does maintaining product categories solve during customer product discovery?
+Why should customers be able to filter products by category and search by Product ID or Product Name?
+How does the My Cart feature help improve customer conversion and reduce order drop‑offs?
+Why is it important to allow checkout only when the cart is not empty?
+What business benefits come from supporting Credit Card and UPI payment options?
+Why must customers be allowed to download invoices after successful payment?
+What is the business reason for limiting feedback only to Delivered orders?
+Why does the admin need bulk upload (.xls/.csv) capabilities?
+What business benefits come from implementing soft delete rather than permanent deletion for products?
+How do order status categories (Confirmed, In‑Transit, Delivered, Cancelled) help in improving business visibility?
+Why is a 5‑day refund message shown during order cancellation?
+Why is pagination important in View All Products, View All Customers, and View All Orders?
+Why must the system prevent cancellation once an order is In Transit or Delivered?
+
+Application Level
+
+List all field validations required for Customer Registration (Name, Country, State, Email, Phone, Password).
+What should happen when a user enters an incorrect email or an invalid password during registration?
+What acknowledgment must be shown after successful registration?
+What validations are required on the Login screen (CustomerId + Password)?
+
+Home Page & Product Display
+
+How should the system display products with quantity < 1?
+Describe how category filtering works in the Home Page.
+What happens when searching by Product ID vs Product Name?
+
+Cart Operations
+
+Explain how total price is dynamically calculated in the cart.
+Describe the difference between Update, Delete, and Remove buttons in the cart.
+What message should be shown if the cart is empty and user clicks Proceed to Buy?
+
+Payment & Invoice
+
+What fields must be validated when Credit Card mode is selected?
+What fields must be captured when UPI mode is selected?
+Describe the full workflow of generating:
+
+
+Order ID
+Transaction ID
+Invoice
+Payment success confirmation
+
+
+What should the system do when payment fails?
+
+Orders & Status
+
+How should the system filter orders using status dropdown (Confirmed, Delivered, etc.)?
+Why can an order be cancelled only if its status is Confirmed?
+What fields are required for cancelling an order (Order ID + Reason)?
+What confirmation message is shown before cancellation?
+
+Profile & Feedback
+
+What fields can the customer update from the Profile screen?
+When is the Confirm Password field shown?
+What validations should occur when updating profile information?
+When can a customer give feedback, and what data should be captured?
+
+
+Theoritical Question
+
+Security & Authentication
+
+What is the difference between password encryption and hashing, and which should be used here?
+What is role-based access control and how does it apply to Customer vs Admin?
+Explain authentication vs authorization with examples from the system.
+
+Software Engineering Concepts
+
+What is client-side vs server-side validation? Give examples from registration and payment screens.
+What is pagination, and why is it required for large data sets like “View All Products”?
+Explain soft delete. Why is it better than hard delete for e-commerce products?
+Define CRUD operations and identify modules where CRUD is used.
+What are ACID properties and how do they apply to the Payment module?
+Explain what DTOs are and why they are used between frontend and backend.
+What is exception handling and how should the system handle invalid Order ID or Product ID?
+
+Database & Data Modeling
+
+Describe the entity relationships between Customer, Product, Cart, Order, OrderItems, Feedback.
+What is a foreign key and how is it used in OrderItems?
+What is normalization, and why is it useful for product and order tables?
+
